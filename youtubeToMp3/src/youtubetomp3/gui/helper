@@ -1,0 +1,25 @@
+from tkinter import Button, Label
+from typing import Callable
+import tkinter as tk
+
+
+
+def create_button(self, name_Button: str, text: str, command: Callable[[], None], x: float, y: int) -> None:
+    """
+    Create a button and place it on the window.
+    
+    Args:
+        name_Button: Name used to store the button as an attribute.
+        text: Text displayed on the button.
+        command: Function to be called when the button is clicked.
+        x: Relative horizontal position (0 to 1).
+        y: Absolute vertical position in pixels.
+    """
+    button = Button(self.root, text=text, width=14, font=("Arial", 14), command=command)
+    button.place(relx=x, y=y, anchor="n")
+    setattr(self, name_Button, button)
+
+def create_label(root, text, relx: float, y: int, size) -> None:    
+    text_var = tk.StringVar(value=text)
+    label = Label(root, textvariable=text_var, font=("Arial", size, "bold"))
+    label.place(relx=relx, y=y, anchor="n")
